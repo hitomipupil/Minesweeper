@@ -9,13 +9,13 @@ import Mine from "./components/Mine";
 
 const App = () => {
     const [gameOver, setgameOver] = useState(false);
-    const [numberOfMines, setnumberOfMines] = useState(5);
+    const [numberOfMines, setNumberOfMines] = useState(0);
 
     return (
     <>
         <Title title={'Minesweeper'}/>
-        <Input numberOfMines={numberOfMines} onWow={setnumberOfMines}/>
-        <CurrentScore />
+        <Input numberOfMines={numberOfMines} changeHandler={setNumberOfMines}/>
+        <CurrentScore score={0}/>
         <MineField numberOfMines={numberOfMines}/>
         <Mine />
     </>
