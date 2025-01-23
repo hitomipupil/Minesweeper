@@ -1,9 +1,7 @@
-import './Mine.css'
+import "./Mine.css";
 
 const Mine = () => {
-  return (
-    <button>Mine</button>
-  )
-}
+    return <button>Mine</button>;
+};
 
-export default Mine
+export default Mine;
