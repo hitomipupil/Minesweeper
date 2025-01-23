@@ -1,10 +1,11 @@
 import './Input.css'
 
-const Input = ({ numberOfMines, onWow }) => {
+const Input = ({ numberOfMines, changeHandler }) => {
+
   return (
     <>
     <div>input number:</div>
-    <input value={numberOfMines} onChange={(event)=>{onWow(event.target.value)}}></input>
+    <input type='number' value={numberOfMines} onChange={(event)=>{changeHandler(event.target.value.trim())}} />
     </>
   )
 }
