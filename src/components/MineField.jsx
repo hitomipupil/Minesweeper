@@ -2,27 +2,32 @@ import Mine from "./Mine";
 import "./MineField.css";
 
 const MineField = ({ numberOfMines }) => {
-
-    // render Mines component for numberOfMines times
-    // React doesn't allow to return for loop so make an array of mines
     const arrayOfMines = [];
-    for (let i = 0; i < numberOfMines ** 2; i++){
-        arrayOfMines.push('mine' + i);
+    for (let i = 0; i < numberOfMines ** 2; i++) {
+        arrayOfMines.push("mine" + i);
     }
-    
+
+    const getRandomInt = (max) => {
+        return Math.floor(Math.random() * max);
+    };
+
+    const isExplosive = () => {
+        return getRandomInt(5) === 1;
+    };
+
     return (
-        <div id='mineField'
-        style={{
-            gridTemplateRows: `repeat(${numberOfMines}, 40px)`,
-            gridTemplateColumns: `repeat(${numberOfMines}, 40px)`
-        }}>
-        {
-            arrayOfMines.map((mine, i) => (
-                <Mine key={i}/>
-            ))
-        }
+        <div
+            id="mineField"
+            style={{
+                gridTemplateRows: `repeat(${numberOfMines}, 40px)`,
+                gridTemplateColumns: `repeat(${numberOfMines}, 40px)`
+            }}
+        >
+            {arrayOfMines.map((mine, i) => (
+                <Mine key={i} isExplosive={isExplosive()} />
+            ))}
         </div>
-    )
+    );
 };
 
 export default MineField;
