@@ -3,13 +3,14 @@ import { useState } from "react";
 
 import "./CurrentScore.css";
 
-const CurrentScore = ({}) => {
+const CurrentScore = ({ isCorrect }) => {
     const [score, setScore] = useState(0);
-    return <div>CurrentScore: {score}</div>;
-};
 
-CurrentScore.propTypes = {
-    score: PropTypes.number.isRequired
+    if (isCorrect) {
+        setScore((prevScore) => prevScore++);
+    }
+
+    return <div>CurrentScore: {score}</div>;
 };
 
 export default CurrentScore;

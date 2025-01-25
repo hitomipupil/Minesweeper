@@ -9,7 +9,7 @@ import Mine from "./components/Mine";
 
 const App = () => {
     const [gameOver, setGameOver] = useState(false);
-    const [numberOfMines, setNumberOfMines] = useState(0);
+    const [numberOfMines, setNumberOfMines] = useState("");
 
     return (
         <>
