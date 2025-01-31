@@ -1,11 +1,10 @@
 import Input from "./components/Input";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import "./App.css";
 import CurrentScore from "./components/CurrentScore";
 import Title from "./components/Title";
 import MineField from "./components/MineField";
-import Mine from "./components/Mine";
 
 const App = () => {
     const [isGameOver, setIsGameOver] = useState(false);
@@ -19,11 +18,19 @@ const App = () => {
         });
     }, [score]);
 
-    const changeHandler = (e) => {
-      isGameOver && setIsGameOver(false);
-      setScore(0);
-      setNumberOfMines(e.target.value);
-    }
+    const changeHandler = useCallback((e) => {
+        isGameOver && setIsGameOver(false);
+        setScore(0);
+        setNumberOfMines(e.target.value);
+    }, [numberOfMines]);
+
+    // useEffect(() => {
+    //     const alert = () => {
+    //         window.alert('Good luck!');
+    //     }
+    //     alert();
+    // }, [changeHandler]) 
+    
 
     return (
         <>
