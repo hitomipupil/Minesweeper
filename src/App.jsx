@@ -1,5 +1,5 @@
 import Input from "./components/Input";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import "./App.css";
 import CurrentScore from "./components/CurrentScore";
@@ -8,8 +8,14 @@ import MineField from "./components/MineField";
 import Mine from "./components/Mine";
 
 const App = () => {
-    const [gameOver, setGameOver] = useState(false);
+    const [isGameOver, setIsGameOver] = useState(false);
     const [numberOfMines, setNumberOfMines] = useState("");
+    const [score, setScore] = useState(0);
+
+    // only when the not explosive button is clicked, it updates the score
+    const addScore = useCallback(() => {
+        setScore((prevScore) => { return prevScore = prevScore+ 1; })
+    }, [score]) 
 
     return (
         <>
@@ -18,8 +24,8 @@ const App = () => {
                 numberOfMines={numberOfMines}
                 changeHandler={setNumberOfMines}
             />
-            <CurrentScore score={0} />
-            <MineField numberOfMines={numberOfMines} />
+            <CurrentScore score={score} />
+            <MineField numberOfMines={numberOfMines} addScore={addScore} isGameOver={isGameOver} setIsGameOver={setIsGameOver}/>
         </>
     );
 };

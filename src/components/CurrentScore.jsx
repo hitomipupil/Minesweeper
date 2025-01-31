@@ -3,12 +3,7 @@ import { useState } from "react";
 
 import "./CurrentScore.css";
 
-const CurrentScore = ({ isCorrect }) => {
-    const [score, setScore] = useState(0);
-
-    if (isCorrect) {
-        setScore((prevScore) => prevScore++);
-    }
+const CurrentScore = ({ score }) => {
 
     return <div>CurrentScore: {score}</div>;
 };

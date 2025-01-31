@@ -1,12 +1,32 @@
+import { useState } from "react";
 import "./Mine.css";
 
-const Mine = ({ isExplosive }) => {
-    // when clicked, set the mine status to clicked
-    // if it's explosive, set the mine status to isExplosive
-    // if it is not explosive, increase score by one
+const Mine = ({ isExplosive, addScore, isGameOver, setIsGameOver }) => {
+    const [clicked, setClicked] = useState(false);
+    
+    const clickHandler = () => {
+        setClicked(true);
+        if(!isExplosive) {
+            console.log('add score');
+            addScore();
+        } else if(isExplosive){
+            setIsGameOver(true);
+            return;
+        }
+    }
+    
+    const backGroundColor = () => {
+        if(clicked && !isExplosive) {
+            return 'green';
+        } else if(clicked && isExplosive){
+            return 'red';
+        }
+    }
+
+
     return (
         <>
-            <button onClick={() => isExplosive && console.log("explosive")}>
+            <button style={{ backgroundColor: backGroundColor()}} onClick={clickHandler} disabled={clicked || isGameOver}>
                 ?
             </button>
         </>

@@ -1,21 +1,28 @@
+import { useCallback, useMemo } from "react";
 import Mine from "./Mine";
 import "./MineField.css";
 
-const MineField = ({ numberOfMines }) => {
-    const arrayOfMines = [];
-    for (let i = 0; i < numberOfMines ** 2; i++) {
-        arrayOfMines.push("mine" + i);
-    }
+const getRandomInt = (max) => {
+    return Math.floor(Math.random() * max);
+};
 
-    const getRandomInt = (max) => {
-        return Math.floor(Math.random() * max);
-    };
 
-    const isExplosive = () => {
-        return getRandomInt(5) === 1;
-    };
+const isExplosive = () => {
+    return getRandomInt(5) === 1;
+};
+
+const MineField = ({ numberOfMines, addScore, isGameOver, setIsGameOver }) => {
+    // only when the numberOfMines is changed, return new arrayOfMines
+    const field = useMemo(() => {
+        const arrayOfMines = [];
+        for (let i = 0; i < numberOfMines ** 2; i++) {
+            arrayOfMines.push({explosive: isExplosive()});
+        }
+        return arrayOfMines;
+    }, [numberOfMines])
 
     return (
+        <>
         <div
             id="mineField"
             style={{
@@ -23,10 +30,12 @@ const MineField = ({ numberOfMines }) => {
                 gridTemplateColumns: `repeat(${numberOfMines}, 40px)`
             }}
         >
-            {arrayOfMines.map((mine, i) => (
-                <Mine key={i} isExplosive={isExplosive()} />
+            {field.map((mine, i) => (
+                <Mine key={i} isExplosive={mine.explosive} addScore={addScore} isGameOver={isGameOver} setIsGameOver={setIsGameOver}/>
             ))}
         </div>
+        {isGameOver && <div>Game Over!</div>}
+        </>
     );
 };
 
