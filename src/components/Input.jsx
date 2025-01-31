@@ -5,12 +5,10 @@ const Input = ({ numberOfMines, changeHandler }) => {
         <>
             <div>input number:</div>
             <input
-            type="number"
+                type="number"
                 placeholder="input a number"
                 value={numberOfMines}
-                onChange={(event) => {
-                    changeHandler(event.target.value);
-                }}
+                onChange={changeHandler}
             />
         </>
     );

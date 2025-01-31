@@ -14,18 +14,31 @@ const App = () => {
 
     // only when the not explosive button is clicked, it updates the score
     const addScore = useCallback(() => {
-        setScore((prevScore) => { return prevScore = prevScore+ 1; })
-    }, [score]) 
+        setScore((prevScore) => {
+            return (prevScore = prevScore + 1);
+        });
+    }, [score]);
+
+    const changeHandler = (e) => {
+      isGameOver && setIsGameOver(false);
+      setScore(0);
+      setNumberOfMines(e.target.value);
+    }
 
     return (
         <>
             <Title title={"Minesweeper"} />
             <Input
                 numberOfMines={numberOfMines}
-                changeHandler={setNumberOfMines}
+                changeHandler={changeHandler}
             />
             <CurrentScore score={score} />
-            <MineField numberOfMines={numberOfMines} addScore={addScore} isGameOver={isGameOver} setIsGameOver={setIsGameOver}/>
+            <MineField
+                numberOfMines={numberOfMines}
+                addScore={addScore}
+                isGameOver={isGameOver}
+                setIsGameOver={setIsGameOver}
+            />
         </>
     );
 };

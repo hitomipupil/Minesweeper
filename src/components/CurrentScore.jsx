@@ -4,7 +4,6 @@ import { useState } from "react";
 import "./CurrentScore.css";
 
 const CurrentScore = ({ score }) => {
-
     return <div>CurrentScore: {score}</div>;
 };
 
