@@ -1,5 +1,5 @@
 import Input from "./components/Input";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import "./App.css";
 import CurrentScore from "./components/CurrentScore";
@@ -11,6 +11,20 @@ const App = () => {
     const [numberOfMines, setNumberOfMines] = useState("");
     const [score, setScore] = useState(0);
 
+    const checkFirstRender = useRef(true);
+
+  useEffect(() => {
+    if (checkFirstRender.current) {
+      checkFirstRender.current = false;
+      return;
+    }
+    const alert = () => {
+        window.alert("Good luck!");
+    };
+    alert();
+    }, [numberOfMines]);
+
+
     // only when the not explosive button is clicked, it updates the score
     const addScore = useCallback(() => {
         setScore((prevScore) => {
@@ -18,19 +32,14 @@ const App = () => {
         });
     }, [score]);
 
-    const changeHandler = useCallback((e) => {
-        isGameOver && setIsGameOver(false);
-        setScore(0);
-        setNumberOfMines(e.target.value);
-    }, [numberOfMines]);
-
-    // useEffect(() => {
-    //     const alert = () => {
-    //         window.alert('Good luck!');
-    //     }
-    //     alert();
-    // }, [changeHandler]) 
-    
+    const changeHandler = useCallback(
+        (e) => {
+            isGameOver && setIsGameOver(false);
+            setScore(0);
+            setNumberOfMines(e.target.value);
+        },
+        [numberOfMines]
+    );
 
     return (
         <>
