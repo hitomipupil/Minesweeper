@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import Mine from "./Mine";
 import "./MineField.css";
 
+
 const getRandomInt = (max) => {
     return Math.floor(Math.random() * max);
 };
@@ -39,7 +40,7 @@ const MineField = ({ numberOfMines, addScore, isGameOver, setIsGameOver }) => {
                     />
                 ))}
             </div>
-            {isGameOver && <div>Game Over!</div>}
+            {isGameOver && <div className="gameOver">Game Over!</div>}
         </>
     );
 };
