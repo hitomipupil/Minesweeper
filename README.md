@@ -1,4 +1,4 @@
-# Minesweeper
+# Minesweeper🤯
 
 A simple **Minesweeper** game built with **React** and **Vite**. The game allows users to input the number of mines, interact with a dynamically generated minefield, and track their score. The game ends when a player clicks on an explosive mine.
 
