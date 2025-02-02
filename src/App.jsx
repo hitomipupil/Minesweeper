@@ -13,17 +13,16 @@ const App = () => {
 
     const checkFirstRender = useRef(true);
 
-  useEffect(() => {
-    if (checkFirstRender.current) {
-      checkFirstRender.current = false;
-      return;
-    }
-    const alert = () => {
-        window.alert("Good luck!");
-    };
-    alert();
+    useEffect(() => {
+        if (checkFirstRender.current) {
+            checkFirstRender.current = false;
+            return;
+        }
+        const alert = () => {
+            window.alert("Good luck!");
+        };
+        alert();
     }, [numberOfMines]);
-
 
     // only when the not explosive button is clicked, it updates the score
     const addScore = useCallback(() => {
