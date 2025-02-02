@@ -4,7 +4,6 @@ import "./Mine.css";
 const Mine = ({ isExplosive, addScore, isGameOver, setIsGameOver }) => {
     const [clicked, setClicked] = useState(false);
 
-
     const clickHandler = useCallback(() => {
         setClicked(true);
         if (!isExplosive) {
@@ -13,7 +12,7 @@ const Mine = ({ isExplosive, addScore, isGameOver, setIsGameOver }) => {
             setIsGameOver(true);
             return;
         }
-    }, [clicked])
+    }, [clicked]);
 
     const backGroundColor = useMemo(() => {
         if (clicked && !isExplosive) {
@@ -21,7 +20,7 @@ const Mine = ({ isExplosive, addScore, isGameOver, setIsGameOver }) => {
         } else if (clicked && isExplosive) {
             return "red";
         }
-    }, [clicked])
+    }, [clicked]);
 
     return (
         <>
