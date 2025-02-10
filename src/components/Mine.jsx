@@ -25,12 +25,12 @@ const Mine = ({ isExplosive, addScore, isGameOver, setIsGameOver }) => {
     return (
         <>
             <button
-            className="mine"
+                className="mine"
                 style={{ backgroundColor: backGroundColor }}
                 onClick={clickHandler}
                 disabled={clicked || isGameOver}
             >
-                {clicked ? '' : '?'}
+                {clicked ? "" : "?"}
             </button>
         </>
     );

@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import Mine from "./Mine";
 import "./MineField.css";
 
-
 const getRandomInt = (max) => {
     return Math.floor(Math.random() * max);
 };

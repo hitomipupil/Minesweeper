@@ -6,7 +6,7 @@ A simple **Minesweeper** game built with **React** and **Vite**. The game allows
 
 - **Dynamic Minefield**: Users can specify the number of mines to generate a customizable grid.
 
-- **State Management**: Uses  `useState` for handling game state and score updates.
+- **State Management**: Uses `useState` for handling game state and score updates.
 
 - **Performance** Optimization: Utilizes `useMemo` and `useCallback` to optimize memory usage and prevent unnecessary re-renders.
 
